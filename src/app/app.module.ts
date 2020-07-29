@@ -21,8 +21,16 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import {PromotionService} from './services/promotion.service';
+import { LoginComponent } from './login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
-
+import { MatFormFieldModule } from '@angular/material/form-field';  
+import { MatInputModule } from '@angular/material/input';           // for driven forms
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule } from '@angular/forms'; 
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 
 
@@ -42,6 +50,7 @@ import {PromotionService} from './services/promotion.service';
     AboutComponent,
     HomeComponent,
     ContactComponent,
+    LoginComponent,
   
    
    
@@ -50,9 +59,10 @@ import {PromotionService} from './services/promotion.service';
     BrowserModule,
     AppRoutingModule, BrowserAnimationsModule,
     MatToolbarModule,FlexLayoutModule, MatListModule, MatButtonModule,
-    MatGridListModule,MatButtonModule,MatCardModule
+    MatGridListModule,MatButtonModule,MatCardModule,MatDialogModule, MatFormFieldModule ,MatInputModule ,
+    MatCheckboxModule,FormsModule,ReactiveFormsModule,MatSelectModule,MatSlideToggleModule
     
-  ],
+  ],entryComponents :[ LoginComponent], //cela permet d'ouvrir un component ''login" sur un autre component
   providers: [DishService,PromotionService],
   bootstrap: [AppComponent]
 })

@@ -18,4 +18,11 @@ margin: 30px;
 display:flex;     
 }
 
+.flex-spacer //espace jus qu'ua extremité droite
+{
+  flex:1 1 auto;
+}
+.background-primary{
+  color: #512DA8;
+}
 
