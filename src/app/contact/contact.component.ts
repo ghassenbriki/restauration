@@ -50,8 +50,8 @@ export class ContactComponent implements OnInit {
     this.feedback = this.feedbackForm.value;
     console.log(this.feedback);
     this.feedbackForm.reset({firstname:'',lastname:'',telnum:0});
-   
-    //this.feedbackFormDirective.resetForm();
+
+    this.feedbackFormDirective.resetForm(); //assure the reset of the form
 
 
   }

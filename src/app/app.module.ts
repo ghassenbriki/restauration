@@ -31,6 +31,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+
 
 
 
@@ -61,6 +63,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
     MatToolbarModule,FlexLayoutModule, MatListModule, MatButtonModule,
     MatGridListModule,MatButtonModule,MatCardModule,MatDialogModule, MatFormFieldModule ,MatInputModule ,
     MatCheckboxModule,FormsModule,ReactiveFormsModule,MatSelectModule,MatSlideToggleModule
+    ,MatProgressSpinnerModule,
     
   ],entryComponents :[ LoginComponent], //cela permet d'ouvrir un component ''login" sur un autre component
   providers: [DishService,PromotionService],
