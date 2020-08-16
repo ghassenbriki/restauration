@@ -32,6 +32,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
 
 
 
@@ -53,6 +54,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HomeComponent,
     ContactComponent,
     LoginComponent,
+    
   
    
    
@@ -63,7 +65,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatToolbarModule,FlexLayoutModule, MatListModule, MatButtonModule,
     MatGridListModule,MatButtonModule,MatCardModule,MatDialogModule, MatFormFieldModule ,MatInputModule ,
     MatCheckboxModule,FormsModule,ReactiveFormsModule,MatSelectModule,MatSlideToggleModule
-    ,MatProgressSpinnerModule,
+    ,MatProgressSpinnerModule,NgxInputStarRatingModule
     
   ],entryComponents :[ LoginComponent], //cela permet d'ouvrir un component ''login" sur un autre component
   providers: [DishService,PromotionService],

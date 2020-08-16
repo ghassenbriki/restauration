@@ -3,7 +3,7 @@
  fxLayoutAlign="space-around center"  fxLayout.xs="column"  fxLayout.sm="column" fxLayoutGap.xs="0">
  
 
-  <div fxFlex="40"> <!-- we use Flex in children elements inside FlexLayout-->
+  <div *ngIf="dish" fxFlex="40"> <!-- we use Flex in children elements inside FlexLayout-->
   
 
   <mat-card *ngIf="dish">
@@ -12,7 +12,7 @@
     
       <mat-card-title>
 
-        <h3 *ngIf="dish">{{dish.name | uppercase}}</h3>
+        <h3 >{{dish.name | uppercase}}</h3>
 
 
       </mat-card-title>
@@ -25,23 +25,35 @@
       </mat-card-content>
 
       <mat-card-actions>
+      
+        <button mat-button [routerLink]="['/dishDetail',prev]"><span class="fa fa-chevron-left fa-lg"></span></button>
         <button mat-button>SHARE</button>
         <button mat-button>LIKE</button>
         <button mat-button (click)="goBack()">BACK</button>
+
+        <span class="flex-spacer"></span>
+        <button mat-button [routerLink]="['/dishDetail',next]"><span class="fa fa-chevron-right fa-lg"></span></button>
+
+      
+       
 
       </mat-card-actions>
 
 
   </mat-card>
 
+
+
 </div>
+
 
 <div [hidden]="dish">
   <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
 </div>
+
   
 
-   <div fxFlex="40">
+   <div *ngIf="dish" fxFlex="40">
     <mat-list *ngIf="dish">
       <h2>Comments</h2>
       <mat-list-item *ngFor="let comment of dish.comment">
@@ -53,7 +65,62 @@
       </mat-list-item>
     
     </mat-list>
+  
+    
+ 
+    <!-- The form in task 3-->
 
+    <form novalidate [formGroup]="f" (ngSubmit)="onSubmit()">
+      
+      <p>
+        <mat-form-field>
+        <input matInput type="text" formControlName="name" placeholder="Enter your name" >
+
+      </mat-form-field>
+        
+      </p>
+
+      
+      <p>
+      
+       
+          <ngx-input-star-rating formControlName="rating"></ngx-input-star-rating>
+          <button type="submit" mat-button style="color:#fff!important;background-color:#ff4b39;margin-left: 0.5cm;"  [disabled]='f.invalid'>Submit your comment</button>
+
+  
+       
+    </p>
+
+     <p>
+        <mat-form-field style="width: 100%;">
+        <textarea matInput  formControlName="comment"  placeholder="your comments here .." rows="6"></textarea>
+
+      </mat-form-field>
+        
+    
+
+        
+      </p>
+
+
+
+
+
+
+    </form>
+
+      
+    <div [hidden]="dish">
+      <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+    </div>
+  
+
+    
+    
+
+
+
+   
 
   </div>
 

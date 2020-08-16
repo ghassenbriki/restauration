@@ -1,5 +1,5 @@
 import {Dish} from "./Dish";
-export const DISHES:Dish[]=
+export var DISHES:Dish[]=
 [
     {    
 id: '0',

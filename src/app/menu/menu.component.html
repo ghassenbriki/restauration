@@ -29,16 +29,16 @@
 
   <div fxFlex *ngIf="dishes">
     <mat-grid-list cols="2" rowHeight="200px">
-      <mat-grid-tile *ngFor="let dish of dishes" [routerLink]="['/dishDetail',dish.id]">
+      <mat-grid-tile *ngFor="let dish of dishes" >
 
-        <img height="200px" src={{dish.image}} alt={{dish.name}}>
-        <mat-grid-tile-footer>
+        <img  [routerLink]="['/dishDetail',dish.id]" height="200px" src={{dish.image}} alt={{dish.name}}>
+        <mat-grid-tile-footer  >
           <h1>{{dish.name | uppercase}}</h1>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div style="margin-right: 5cm;"  [hidden]="dishes"> <!-- if dishes still not defined yet dom will display loading .. -->
+  <div  [hidden]="dishes"> <!-- if dishes still not defined yet dom will display loading .. -->
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
   </div>
 

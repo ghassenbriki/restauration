@@ -32,10 +32,10 @@ export class ContactComponent implements OnInit {
  
   createForm() {
     this.feedbackForm = this.fb.group({
-      firstname: ['',Validators.required],
-      lastname:  ['',Validators.required],
-      telnum:  0,
-      email:  ['',Validators.required],
+      firstname: ['',[Validators.required,Validators.maxLength(23),Validators.minLength(3)]],
+      lastname:  ['',[Validators.required],Validators.maxLength(23),Validators.minLength(3)],
+      telnum: [0,[Validators.required,Validators.pattern]],
+      email:  ['',[Validators.required,Validators.email]],
       agree: false,
       contacttype: 'None',
       message: ''
@@ -53,7 +53,8 @@ export class ContactComponent implements OnInit {
 
     this.feedbackFormDirective.resetForm(); //assure the reset of the form
 
-
+    /* we can crate reactive form based on reactive programming(observable) using the changeValues observable and
+    doing more flexible form validations*/
   }
 
 

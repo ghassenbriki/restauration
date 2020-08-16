@@ -63,12 +63,16 @@
       </p>
       <p>
         <mat-form-field class="half-width">
-          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel">
+          <input matInput formControlName="telnum" placeholder="Tel. Number" type="tel" pattern="0-9*" required >
+          <mat-error *ngIf= "feedbackForm.get('telnum').hasError('pattern')"> Enter valid Num</mat-error>
+        
         </mat-form-field>
         <mat-form-field class="half-width">
-          <input matInput formControlName="email" placeholder="Email" type="email">
+          <input matInput formControlName="email" placeholder="Email" type="email" required>
           <mat-error *ngIf="feedbackForm.get('email').hasError('required') && feedbackForm.get('email').touched">
           Enter an email</mat-error>
+
+          <mat-error *ngIf= "feedbackForm.get('email').hasError('email')"> Enter valid email</mat-error>
         </mat-form-field>
         
       </p>
@@ -86,7 +90,7 @@
         </table>
       <p>
         <mat-form-field style="width:90%;">
-          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=12></textarea>
+          <textarea matInput formControlName="message" placeholder="Your Feedback" rows=10></textarea>
         </mat-form-field>
       </p>
       <button type="submit" mat-button style="color: mediumslateblue;" [disabled]='feedbackForm.invalid'>Submit</button>
