@@ -7,6 +7,7 @@ import { resolve } from 'url';
 import {switchMap} from 'rxjs/operators';
 import { FormBuilder, FormGroup, Form, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import{baseUrl} from '../shared/baseurl';
 
 
 
@@ -29,6 +30,10 @@ export class DishdetailComponent implements OnInit {
   ID:string;
   f:FormGroup;
   value : Observable <number>;
+  url:string;
+  err :string;
+  dishcopy:Dish;
+  
   
 
 
@@ -46,16 +51,18 @@ export class DishdetailComponent implements OnInit {
     
 
   
-
+    this.url=baseUrl;
     this.dishservice.getDishIds().subscribe(dishIds => this.dishIds = dishIds);
+   
     this.route.params.pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
-    .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id) });
+    .subscribe(dish => { this.dish = dish ;this.setPrevNext(dish.id);this.dishcopy=dish},(err)=> {this.err=<any>err});
     // we create an other observable by using switchmap  the new observable is service.getDish
     /* after each clic prev or next the service will fetch the new dish who is updated and the view updated also
      */ 
   
     //console.log(this.dishesIDs);
     this.value = this.f.controls.rating.valueChanges;
+   
 
 
 
@@ -88,18 +95,31 @@ export class DishdetailComponent implements OnInit {
   }
   onSubmit() 
   {
+
+    console.log(this.dish);
+    console.log(this.dishcopy)
+
     console.log(this.f.value);
     var d=new Date(); 
     var dd=d.toString();
     const obj={rating:this.f.controls['rating'].value,comment:this.f.controls['comment'].value,
     author:this.f.controls['name'].value,date:dd};
     console.log(obj)
-    this.dish.comment.push(obj);
+    
+    this.dishcopy.comments.push(obj);
+   
+    this.dishservice.updateDish(this.dishcopy)
+      .subscribe(dish => {
+        this.dish = dish; this.dishcopy = dish;
+      },
+      errmess => { this.dish = null; this.dishcopy = null; this.err = <any>errmess; });
+    
   
     this.f.reset({name:'',rating:0,comment:''});
     
     
     //this.feedbackFormDirective.resetForm(); assure the reset of the form
+
 
 
     

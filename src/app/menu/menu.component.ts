@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Inject} from '@angular/core';
 import { Dish } from '../shared/Dish';
-import { sharedStylesheetJitUrl } from '@angular/compiler';
 import {DishService} from '../services/dish.service';
+import {baseUrl} from '../shared/baseurl';
+
+
+
+
 
 
 
@@ -16,8 +20,12 @@ import {DishService} from '../services/dish.service';
 export class MenuComponent implements OnInit
  {
   dishes: Dish[];
-
-  selectedDish: Dish;
+  url:string;
+  err:string;
+  
+  
+  
+ // selectedDish: Dish;
 
 
 constructor(private dishservice:DishService) { }
@@ -25,12 +33,14 @@ constructor(private dishservice:DishService) { }
   ngOnInit()
    {
     //this.dishservice.getDishes().then(dishes=>this.dishes=dishes);
-    this.dishservice.getDishes().subscribe(dishes => this.dishes = dishes);
+    this.url=baseUrl;
+    this.dishservice.getDishes().subscribe(dishes => this.dishes = dishes,(err)=>this.err=<any>err);
+    console.log(this.dishes);
   }
 
   
   onSelect(dish: Dish) {
-    this.selectedDish = dish;
+    //this.selectedDish = dish;
 
 }
  }

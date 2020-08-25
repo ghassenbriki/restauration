@@ -9,7 +9,7 @@ featured: boolean;
 label: string;
 price: string;
 description: string;
-comment:Comments[];
+comments:Comments[];
 
 
 }

@@ -18,7 +18,7 @@
       </mat-card-title>
   </mat-card-header>
 
-      <img src={{dish.image}} alt={{dish.name}} width="100%">
+      <img src="{{ url + dish.image }}" alt={{dish.name}} width="100%">
 
       <mat-card-content>
         <p>{{dish.desription}}</p>
@@ -47,16 +47,25 @@
 </div>
 
 
-<div [hidden]="dish">
+<div [hidden]="dish || err">
   <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
 </div>
+
+
+<div *ngIf="err">
+
+  <h2>{{err}}</h2>
+
+
+ </div>
+
 
   
 
    <div *ngIf="dish" fxFlex="40">
     <mat-list *ngIf="dish">
       <h2>Comments</h2>
-      <mat-list-item *ngFor="let comment of dish.comment">
+      <mat-list-item *ngFor="let comment of dish.comments">
        
         <h4 matLine> {{comment.comment}} </h4>
         <p matLine >  {{comment.rating}} Stars </p>
@@ -93,7 +102,7 @@
 
      <p>
         <mat-form-field style="width: 100%;">
-        <textarea matInput  formControlName="comment"  placeholder="your comments here .." rows="6"></textarea>
+        <textarea matInput  formControlName="comment"  placeholder="your comments here .." rows="5"></textarea>
 
       </mat-form-field>
         
@@ -109,10 +118,8 @@
 
     </form>
 
-      
-    <div [hidden]="dish">
-      <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
-    </div>
+
+
   
 
     

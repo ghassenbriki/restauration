@@ -33,6 +33,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
+import {HttpClientModule } from '@angular/common/http';
+import { HttpErrorService } from './services/http-error.service';
+
+
+
+
 
 
 
@@ -65,10 +71,10 @@ import { NgxInputStarRatingModule } from '@ngx-lite/input-star-rating';
     MatToolbarModule,FlexLayoutModule, MatListModule, MatButtonModule,
     MatGridListModule,MatButtonModule,MatCardModule,MatDialogModule, MatFormFieldModule ,MatInputModule ,
     MatCheckboxModule,FormsModule,ReactiveFormsModule,MatSelectModule,MatSlideToggleModule
-    ,MatProgressSpinnerModule,NgxInputStarRatingModule
+    ,MatProgressSpinnerModule,NgxInputStarRatingModule,HttpClientModule
     
   ],entryComponents :[ LoginComponent], //cela permet d'ouvrir un component ''login" sur un autre component
-  providers: [DishService,PromotionService],
+  providers: [DishService,PromotionService,HttpErrorService], 
   bootstrap: [AppComponent]
 })
 export class AppModule {}

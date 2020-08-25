@@ -31,15 +31,20 @@
     <mat-grid-list cols="2" rowHeight="200px">
       <mat-grid-tile *ngFor="let dish of dishes" >
 
-        <img  [routerLink]="['/dishDetail',dish.id]" height="200px" src={{dish.image}} alt={{dish.name}}>
+        <img  [routerLink]="['/dishDetail',dish.id]" height="200px" src= "{{ url + dish.image }}" alt={{dish.name}}>
         <mat-grid-tile-footer  >
           <h1>{{dish.name | uppercase}}</h1>
         </mat-grid-tile-footer>
       </mat-grid-tile>
     </mat-grid-list>
   </div>
-  <div  [hidden]="dishes"> <!-- if dishes still not defined yet dom will display loading .. -->
+  <div  [hidden]="dishes || err"> <!-- if dishes still not defined yet dom will display loading .. -->
     <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
+  </div>
+
+  <div fxFlex *ngIf="err">
+    <h2>Error</h2>
+    <h4>{{err}}</h4>
   </div>
 
 
